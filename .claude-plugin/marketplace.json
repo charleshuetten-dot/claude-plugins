@@ -14,8 +14,7 @@
       "source": "dozent",
       "description": "Reiseplanung und Reisekostenabrechnung, Wochenbriefing und Seminarrecherche.",
       "author": { "name": "Charles Huetten" },
-      "category": "productivity",
-      "strict": false
+      "category": "productivity"
     },
     {
       "name": "ablage-system",
@@ -23,8 +22,7 @@
       "source": "ablage-system",
       "description": "Einheitliche Benennung und Ablage von Dateien sowie von Fragensets des Gamification-Portals.",
       "author": { "name": "Charles Huetten" },
-      "category": "productivity",
-      "strict": false
+      "category": "productivity"
     },
     {
       "name": "frmd-pasn",
@@ -32,8 +30,7 @@
       "source": "frmd-pasn",
       "description": "Bildoptimierung fuer Produktfotos der Website frmdpasn.art.",
       "author": { "name": "Charles Huetten" },
-      "category": "creative",
-      "strict": false
+      "category": "creative"
     }
   ]
 }
