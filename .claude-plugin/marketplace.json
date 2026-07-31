@@ -4,33 +4,21 @@
   "owner": {
     "name": "Charles Huetten"
   },
-  "metadata": {
-    "pluginRoot": "./plugins"
-  },
   "plugins": [
     {
       "name": "dozent",
-      "displayName": "Dozent",
-      "source": "dozent",
-      "description": "Reiseplanung und Reisekostenabrechnung, Wochenbriefing und Seminarrecherche.",
-      "author": { "name": "Charles Huetten" },
-      "category": "productivity"
+      "source": "./plugins/dozent",
+      "description": "Reiseplanung und Reisekostenabrechnung, Wochenbriefing und Seminarrecherche."
     },
     {
       "name": "ablage-system",
-      "displayName": "Ablage",
-      "source": "ablage-system",
-      "description": "Einheitliche Benennung und Ablage von Dateien sowie von Fragensets des Gamification-Portals.",
-      "author": { "name": "Charles Huetten" },
-      "category": "productivity"
+      "source": "./plugins/ablage-system",
+      "description": "Einheitliche Benennung und Ablage von Dateien sowie von Fragensets des Gamification-Portals."
     },
     {
       "name": "frmd-pasn",
-      "displayName": "FRMD PASN",
-      "source": "frmd-pasn",
-      "description": "Bildoptimierung fuer Produktfotos der Website frmdpasn.art.",
-      "author": { "name": "Charles Huetten" },
-      "category": "creative"
+      "source": "./plugins/frmd-pasn",
+      "description": "Bildoptimierung fuer Produktfotos der Website frmdpasn.art."
     }
   ]
 }
