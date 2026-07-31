@@ -1,0 +1,39 @@
+{
+  "name": "charles-tools",
+  "description": "Eigene Skills fuer Dozententaetigkeit, Ablage und FRMD PASN",
+  "owner": {
+    "name": "Charles Huetten"
+  },
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "dozent",
+      "displayName": "Dozent",
+      "source": "dozent",
+      "description": "Reiseplanung und Reisekostenabrechnung, Wochenbriefing und Seminarrecherche.",
+      "author": { "name": "Charles Huetten" },
+      "category": "productivity",
+      "strict": false
+    },
+    {
+      "name": "ablage-system",
+      "displayName": "Ablage",
+      "source": "ablage-system",
+      "description": "Einheitliche Benennung und Ablage von Dateien sowie von Fragensets des Gamification-Portals.",
+      "author": { "name": "Charles Huetten" },
+      "category": "productivity",
+      "strict": false
+    },
+    {
+      "name": "frmd-pasn",
+      "displayName": "FRMD PASN",
+      "source": "frmd-pasn",
+      "description": "Bildoptimierung fuer Produktfotos der Website frmdpasn.art.",
+      "author": { "name": "Charles Huetten" },
+      "category": "creative",
+      "strict": false
+    }
+  ]
+}
