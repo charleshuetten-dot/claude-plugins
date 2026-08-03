@@ -1,5 +1,5 @@
 {
   "name": "oberflaeche",
   "description": "Verbindliche Oberflaechen-Regeln fuer Charles' eigene Einzeldatei-Apps: Token, Bauteile, Musterbogen.",
-  "version": "1.0.0"
+  "author": { "name": "Charles Huetten" }
 }
