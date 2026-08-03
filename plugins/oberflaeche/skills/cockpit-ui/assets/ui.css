@@ -1,0 +1,236 @@
+/* ============================================================
+   Charles UI — gemeinsame Oberfläche für Cockpit, Seminar-Portal,
+   Tool-Stack und alles Weitere.
+   Version 1.0 · als <style>-Block ganz oben in die Einzeldatei.
+   Grundsatz: Farbe gehört dem Status. Die Hauptaktion wirkt durch
+   Größe und Gewicht, nicht durch Buntheit.
+   ============================================================ */
+
+:root{
+  /* --- Flächen und Linien --- */
+  --bg:        #f4f6f7;   /* Seitenhintergrund */
+  --flaeche:   #ffffff;   /* Karte */
+  --flaeche-2: #eceff1;   /* eingelassene Fläche, Tabellenkopf */
+  --linie:     #d7dce0;   /* Trennlinie, Rahmen */
+  --linie-2:   #b9c1c8;   /* betonter Rahmen, Feldrahmen */
+
+  /* --- Schrift --- */
+  --text:      #12181d;   /* normale Schrift */
+  --text-2:    #56626d;   /* Beschriftung, Nebentext */
+  --text-3:    #7d8892;   /* Platzhalter, deaktiviert */
+
+  /* --- Aktion (bewusst unbunt, damit Farbe Status bleibt) --- */
+  --aktion:      #16202a;
+  --aktion-hell: #26343f;
+  --aktion-text: #ffffff;
+
+  /* --- Status: die vier Farben, überall gleich --- */
+  --offen:          #c0392b;  --offen-flaeche:       #fbeceb;
+  --arbeit:         #b8860b;  --arbeit-flaeche:      #fdf5e0;
+  --arbeit-text:    #7a5a06;                 /* dunkler, damit lesbar */
+  --geliefert:      #1f5ab8;  --geliefert-flaeche:   #eaf0fb;
+  --abgerechnet:    #1e7a4c;  --abgerechnet-flaeche: #e7f4ee;
+
+  /* Aliasse für vorhandenen Code — nicht neu verwenden */
+  --warn: var(--arbeit); --warn-dim: var(--arbeit-flaeche);
+  --ok:   var(--abgerechnet); --fehler: var(--offen);
+
+  /* --- Abstände: alles ist ein Vielfaches von 4 --- */
+  --a1: 4px;  --a2: 8px;  --a3: 12px; --a4: 16px;
+  --a5: 24px; --a6: 32px; --a7: 48px;
+
+  /* --- Bedienelemente: Mindesthöhen, nicht verhandelbar --- */
+  --hoehe-haupt:  56px;   /* Hauptaktion */
+  --hoehe:        48px;   /* normaler Knopf, Eingabefeld, Auswahl */
+  --hoehe-klein:  40px;   /* nur direkt in Listenzeilen */
+
+  /* --- Rundung --- */
+  --r-karte: 12px; --r-feld: 8px; --r-chip: 999px;
+
+  /* --- Schriftgrößen: fünf Stufen, mehr nicht --- */
+  --s-klein: 13px;  /* Beschriftung, Chip, Hinweis */
+  --s-text:  15px;  /* Fließtext, Feldinhalt */
+  --s-karte: 19px;  /* Kartenüberschrift */
+  --s-teil:  24px;  /* Bereichsüberschrift */
+  --s-seite: 30px;  /* Seitentitel, große Kennzahl */
+
+  --schrift: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --schatten: 0 1px 2px rgba(18,24,29,.06), 0 2px 8px rgba(18,24,29,.05);
+}
+
+/* ---------- Grundlagen ---------- */
+*{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font:var(--s-text)/1.5 var(--schrift);
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3{ margin:0 0 var(--a3); line-height:1.25; font-weight:650; }
+h1{ font-size:var(--s-seite); }
+h2{ font-size:var(--s-teil); }
+h3{ font-size:var(--s-karte); }
+
+/* Zahlen fluchten immer untereinander: Beträge, km, Stunden, Datum */
+.zahl, td.zahl, input[type=number], .kennzahl-wert, .betrag{
+  font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1;
+}
+
+/* Tastaturfokus überall sichtbar und gleich */
+:focus-visible{ outline:2px solid var(--aktion); outline-offset:2px; border-radius:var(--r-feld); }
+
+@media (prefers-reduced-motion:reduce){
+  *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+
+/* ---------- Karte ---------- */
+.karte{
+  background:var(--flaeche); border:1px solid var(--linie);
+  border-radius:var(--r-karte); padding:var(--a4);
+  margin-bottom:var(--a4); box-shadow:var(--schatten);
+}
+.karte > h3{ margin-bottom:var(--a3); }
+.karte-kopf{ display:flex; align-items:center; gap:var(--a2); margin-bottom:var(--a3); }
+.karte-kopf h3{ margin:0; flex:1; }
+
+/* Handlungsdruck: rot abgesetzte Karte, sparsam einsetzen */
+.karte.dringend{ border-color:var(--offen); border-left-width:4px; }
+
+/* ---------- Beschriftung und Hinweis ---------- */
+.lbl-klein{
+  display:block; font-size:var(--s-klein); color:var(--text-2);
+  margin-bottom:var(--a1);
+}
+.hinweis{ font-size:var(--s-klein); color:var(--text-2); margin-top:var(--a1); }
+
+/* ---------- Knöpfe ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:var(--a2);
+  min-height:var(--hoehe); padding:0 var(--a4);
+  font:600 var(--s-text)/1 var(--schrift);
+  border:1px solid var(--linie-2); border-radius:var(--r-feld);
+  background:var(--flaeche); color:var(--text);
+  cursor:pointer; transition:background .12s, border-color .12s;
+}
+.btn:hover{ background:var(--flaeche-2); }
+.btn:disabled{ color:var(--text-3); background:var(--flaeche-2); cursor:not-allowed; }
+
+/* Genau EINE Hauptaktion je Bildschirm */
+.btn-haupt{
+  min-height:var(--hoehe-haupt); padding:0 var(--a5);
+  background:var(--aktion); color:var(--aktion-text); border-color:var(--aktion);
+  font-size:17px; width:100%;
+}
+.btn-haupt:hover{ background:var(--aktion-hell); }
+@media (min-width:700px){ .btn-haupt{ width:auto; min-width:260px; } }
+
+/* Nur in Listenzeilen, nie als einzige Aktion eines Bildschirms */
+.btn-klein{ min-height:var(--hoehe-klein); padding:0 var(--a3); font-size:var(--s-klein); }
+
+/* Löschen und Ähnliches */
+.btn-gefahr{ color:var(--offen); border-color:var(--offen); background:var(--offen-flaeche); }
+
+.btnreihe{ display:flex; flex-wrap:wrap; gap:var(--a2); }
+.btnreihe > .btn{ flex:1 1 auto; }
+
+/* ---------- Felder ---------- */
+input,select,textarea{
+  width:100%; min-height:var(--hoehe); padding:0 var(--a3);
+  font:var(--s-text)/1.4 var(--schrift); color:var(--text);
+  background:var(--flaeche); border:1px solid var(--linie-2);
+  border-radius:var(--r-feld);
+}
+textarea{ padding:var(--a3); min-height:120px; resize:vertical; }
+input::placeholder,textarea::placeholder{ color:var(--text-3); }
+.feld{ margin-bottom:var(--a4); }
+
+/* ---------- Status-Chip: die vier Farben, sonst keine ---------- */
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px var(--a3); min-height:28px;
+  font-size:var(--s-klein); font-weight:600;
+  border-radius:var(--r-chip); border:1px solid transparent;
+  white-space:nowrap;
+}
+.chip::before{ content:""; width:8px; height:8px; border-radius:50%; background:currentColor; }
+.chip-offen{        color:var(--offen);       background:var(--offen-flaeche);       border-color:var(--offen); }
+.chip-arbeit{       color:var(--arbeit-text); background:var(--arbeit-flaeche);      border-color:var(--arbeit); }
+.chip-geliefert{    color:var(--geliefert);   background:var(--geliefert-flaeche);   border-color:var(--geliefert); }
+.chip-abgerechnet{  color:var(--abgerechnet); background:var(--abgerechnet-flaeche); border-color:var(--abgerechnet); }
+/* neutral: nur wenn es KEIN Status ist (Auftraggeber, Kategorie, Anzahl) */
+.chip-neutral{ color:var(--text-2); background:var(--flaeche-2); border-color:var(--linie); }
+.chip-neutral::before{ display:none; }
+
+/* Filterleiste aus Chips */
+.chipreihe{ display:flex; flex-wrap:wrap; gap:var(--a2); margin-bottom:var(--a3); }
+.chip[aria-pressed]{ cursor:pointer; }
+.chip[aria-pressed="true"]{ box-shadow:inset 0 0 0 1px currentColor; }
+
+/* ---------- Frist-Ampel (nutzt dieselben Farben) ---------- */
+.frist-rot{ color:var(--offen); font-weight:600; }
+.frist-gelb{ color:var(--arbeit-text); font-weight:600; }
+
+/* ---------- Skelett beim Laden ---------- */
+.skel{
+  display:block; height:14px; margin:var(--a2) 0; border-radius:var(--r-feld);
+  background:linear-gradient(90deg,var(--flaeche-2) 25%,#e3e7ea 50%,var(--flaeche-2) 75%);
+  background-size:200% 100%; animation:skel 1.4s ease-in-out infinite;
+}
+.skel.kurz{ width:35%; } .skel.mittel{ width:60%; } .skel.lang{ width:88%; }
+@keyframes skel{ 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+/* ---------- Hilfe-Popover: hier steckt jede Erklärung ---------- */
+.hilfe{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:24px; height:24px; margin-left:6px; flex:0 0 auto;
+  font-size:var(--s-klein); font-weight:700; color:var(--text-2);
+  background:var(--flaeche-2); border:1px solid var(--linie);
+  border-radius:50%; cursor:help; position:relative;
+}
+.hilfe:hover::after,.hilfe:focus::after{
+  content:attr(data-tip); position:absolute; z-index:60; top:130%; left:50%;
+  transform:translateX(-50%); width:min(300px,70vw);
+  padding:var(--a3); font-size:var(--s-klein); font-weight:400; line-height:1.45;
+  text-align:left; color:var(--text); background:var(--flaeche);
+  border:1px solid var(--linie-2); border-radius:var(--r-feld); box-shadow:var(--schatten);
+}
+
+/* ---------- Leerer Zustand: ein Satz plus die passende Aktion ---------- */
+.leer{
+  padding:var(--a5) var(--a4); text-align:center;
+  color:var(--text-2); background:var(--flaeche-2);
+  border-radius:var(--r-feld);
+}
+.leer p{ margin:0 0 var(--a3); }
+
+/* ---------- Ablage-Zone ---------- */
+.dropzone{
+  padding:var(--a5) var(--a4); text-align:center; color:var(--text-2);
+  border:2px dashed var(--linie-2); border-radius:var(--r-feld);
+  background:var(--flaeche-2); cursor:pointer;
+}
+.dropzone.over{ border-color:var(--aktion); color:var(--text); background:var(--flaeche); }
+
+/* ---------- Kennzahlen ---------- */
+.kennzahlen{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:var(--a3); }
+.kennzahl{ padding:var(--a3); background:var(--flaeche-2); border-radius:var(--r-feld); }
+.kennzahl-wert{ display:block; font-size:var(--s-seite); font-weight:650; line-height:1.1; }
+.kennzahl-lbl{ font-size:var(--s-klein); color:var(--text-2); }
+
+/* ---------- Balken ---------- */
+.balkenreihe{ display:flex; align-items:center; gap:var(--a3); margin-bottom:var(--a2); }
+.balkenreihe > .lbl-klein{ width:64px; margin:0; flex:0 0 auto; }
+.balkenspur{ flex:1; height:10px; background:var(--flaeche-2); border-radius:var(--r-chip); overflow:hidden; }
+.balkenspur > span{ display:block; height:100%; background:var(--aktion); border-radius:var(--r-chip); }
+
+/* ---------- Tabelle ---------- */
+table{ width:100%; border-collapse:collapse; font-size:var(--s-text); }
+th{
+  text-align:left; font-size:var(--s-klein); font-weight:600; color:var(--text-2);
+  background:var(--flaeche-2); padding:var(--a2) var(--a3);
+}
+td{ padding:var(--a3); border-top:1px solid var(--linie); vertical-align:middle; }
+td.zahl,th.zahl{ text-align:right; }
+
+/* ---------- Platz für die feste Aktionsleiste unten ---------- */
+body{ padding-bottom:84px; }
+@media (max-width:900px){ body{ padding-bottom:132px; } }
