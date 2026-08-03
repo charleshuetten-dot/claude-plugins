@@ -9,6 +9,7 @@ Privater Plugin-Marketplace fuer Claude (Cowork, Chat und Claude Code).
 | `dozent` | dozenten-reiseplanung, dozenten-briefing, seminar-recherche |
 | `ablage-system` | ablage, fragenset-ablage |
 | `frmd-pasn` | frmd-bildoptimierung |
+| `oberflaeche` | cockpit-ui |
 
 ## Installation
 

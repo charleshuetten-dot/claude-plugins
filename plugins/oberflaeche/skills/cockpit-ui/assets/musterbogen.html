@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Musterbogen — Charles UI</title>
+<link rel="stylesheet" href="ui.css">
+<style>
+  .seite{ max-width:900px; margin:0 auto; padding:var(--a5) var(--a4); }
+  .regel{ font-size:var(--s-klein); color:var(--text-2); margin:0 0 var(--a3); }
+  .farbfeld{ display:flex; align-items:center; gap:var(--a3); padding:var(--a2) 0; border-top:1px solid var(--linie); }
+  .farbklecks{ width:36px; height:36px; border-radius:var(--r-feld); flex:0 0 auto; border:1px solid var(--linie); }
+  .rasterzeile{ display:flex; align-items:center; gap:var(--a3); margin-bottom:var(--a2); }
+  .rasterbalken{ height:20px; background:var(--aktion); border-radius:3px; }
+  .aktionsleiste{
+    position:fixed; left:0; right:0; bottom:0; z-index:40;
+    display:flex; gap:var(--a2); padding:var(--a3) var(--a4);
+    background:var(--flaeche); border-top:1px solid var(--linie);
+  }
+</style>
+</head>
+<body>
+<div class="seite">
+
+  <h1>Musterbogen</h1>
+  <p class="regel">Jedes Bauteil hier ist verbindlich. Was hier nicht steht, wird nicht neu erfunden, sondern nachgefragt.</p>
+
+  <div class="karte">
+    <h3>1 · Farbe gehört dem Status</h3>
+    <p class="regel">Vier Farben, überall dieselbe Bedeutung — im Cockpit, im Seminar-Portal, im Tool-Stack. Alles andere bleibt unbunt.</p>
+    <div class="farbfeld"><span class="farbklecks" style="background:#c0392b"></span><div><strong>offen</strong> · #c0392b<br><span class="hinweis">auch: überfällig, Fehler, Handlungsdruck</span></div></div>
+    <div class="farbfeld"><span class="farbklecks" style="background:#b8860b"></span><div><strong>in Arbeit</strong> · #b8860b<br><span class="hinweis">auch: Frist in Sicht, Warnung</span></div></div>
+    <div class="farbfeld"><span class="farbklecks" style="background:#1f5ab8"></span><div><strong>geliefert</strong> · #1f5ab8<br><span class="hinweis">auch: erledigt, aber noch nicht bezahlt</span></div></div>
+    <div class="farbfeld"><span class="farbklecks" style="background:#1e7a4c"></span><div><strong>abgerechnet</strong> · #1e7a4c<br><span class="hinweis">auch: bestätigt, abgeschlossen</span></div></div>
+    <div class="farbfeld"><span class="farbklecks" style="background:#16202a"></span><div><strong>Aktion</strong> · #16202a<br><span class="hinweis">Hauptknopf, Balken, Fokusrahmen — bewusst unbunt</span></div></div>
+    <div class="chipreihe" style="margin-top:var(--a4)">
+      <span class="chip chip-offen">offen</span>
+      <span class="chip chip-arbeit">in Arbeit</span>
+      <span class="chip chip-geliefert">geliefert</span>
+      <span class="chip chip-abgerechnet">abgerechnet</span>
+      <span class="chip chip-neutral">Going Public · 3</span>
+    </div>
+  </div>
+
+  <div class="karte">
+    <h3>2 · Abstände sind Vielfache von 4</h3>
+    <p class="regel">Sieben Stufen. Ein Wert, der dazwischen liegt, ist ein Fehler.</p>
+    <div class="rasterzeile"><span class="lbl-klein" style="width:44px;margin:0">4</span><span class="rasterbalken" style="width:4px"></span></div>
+    <div class="rasterzeile"><span class="lbl-klein" style="width:44px;margin:0">8</span><span class="rasterbalken" style="width:8px"></span></div>
+    <div class="rasterzeile"><span class="lbl-klein" style="width:44px;margin:0">12</span><span class="rasterbalken" style="width:12px"></span></div>
+    <div class="rasterzeile"><span class="lbl-klein" style="width:44px;margin:0">16</span><span class="rasterbalken" style="width:16px"></span></div>
+    <div class="rasterzeile"><span class="lbl-klein" style="width:44px;margin:0">24</span><span class="rasterbalken" style="width:24px"></span></div>
+    <div class="rasterzeile"><span class="lbl-klein" style="width:44px;margin:0">32</span><span class="rasterbalken" style="width:32px"></span></div>
+    <div class="rasterzeile"><span class="lbl-klein" style="width:44px;margin:0">48</span><span class="rasterbalken" style="width:48px"></span></div>
+  </div>
+
+  <div class="karte">
+    <h3>3 · Bedienelemente sind groß<span class="hilfe" data-tip="Mindesthöhen: Hauptaktion 56 px, normaler Knopf und jedes Eingabefeld 48 px, kleiner Knopf 40 px — und der nur direkt in Listenzeilen.">?</span></h3>
+    <p class="regel">Genau eine Hauptaktion je Bildschirm. Am Handy volle Breite, am Desktop mindestens 260 px.</p>
+    <button class="btn-haupt">Reise erfassen</button>
+    <div class="btnreihe" style="margin-top:var(--a3)">
+      <button class="btn">Termine anlegen</button>
+      <button class="btn">Bestätigung entwerfen</button>
+      <button class="btn btn-gefahr">Löschen</button>
+    </div>
+    <div class="feld" style="margin-top:var(--a4)">
+      <label class="lbl-klein" for="m1">Auftragsnummer</label>
+      <input id="m1" placeholder="aus der Auftragsbestätigung">
+    </div>
+  </div>
+
+  <div class="karte">
+    <h3>4 · Laden, Leere, Erklärung</h3>
+    <p class="regel">Skelett, wenn nur „es lädt“ zu sagen ist. Beschreibender Text, wenn er etwas Inhaltliches sagt. Erklärungen stecken hinter dem Fragezeichen, nie im Fließtext.</p>
+    <span class="skel lang"></span><span class="skel mittel"></span><span class="skel kurz"></span>
+    <p class="hinweis" style="margin-top:var(--a3)">Erlaubte Ausnahme: „Prüfe auf Terminkonflikte …“, „Gamma erzeugt das Deck … (25 s)“</p>
+    <div class="leer" style="margin-top:var(--a4)">
+      <p>Kein Seminar in Sicht.</p>
+      <button class="btn">Reise erfassen</button>
+    </div>
+    <div class="dropzone" style="margin-top:var(--a4)">Mail, Screenshot oder PDF hierher ziehen</div>
+  </div>
+
+  <div class="karte">
+    <h3>5 · Zahlen fluchten</h3>
+    <p class="regel">Beträge, Kilometer und Stunden immer rechtsbündig und mit Tabellenziffern.</p>
+    <div class="kennzahlen">
+      <div class="kennzahl"><span class="kennzahl-wert zahl">27</span><span class="kennzahl-lbl">Seminare 2026</span></div>
+      <div class="kennzahl"><span class="kennzahl-wert zahl">41</span><span class="kennzahl-lbl">Reisetage</span></div>
+      <div class="kennzahl"><span class="kennzahl-wert zahl">6.180</span><span class="kennzahl-lbl">km</span></div>
+    </div>
+    <table style="margin-top:var(--a4)">
+      <tr><th>Auftrag</th><th>Status</th><th class="zahl">Betrag</th></tr>
+      <tr><td>WBT Sachkunde 34d</td><td><span class="chip chip-offen">offen</span></td><td class="zahl">1.240,00 €</td></tr>
+      <tr><td>Lektorat Modul 7</td><td><span class="chip chip-arbeit">in Arbeit</span></td><td class="zahl">480,00 €</td></tr>
+      <tr><td>Klausuren Fachwirt</td><td><span class="chip chip-abgerechnet">abgerechnet</span></td><td class="zahl">96,50 €</td></tr>
+    </table>
+  </div>
+
+  <div class="karte">
+    <h3>6 · Sprache</h3>
+    <p class="regel">Gleiche Dinge heißen überall gleich. Der Knopf sagt, was passiert — und die Rückmeldung benutzt dasselbe Wort.</p>
+    <table>
+      <tr><th>statt</th><th>immer</th></tr>
+      <tr><td>Speichern / Hinzufügen / Anlegen durcheinander</td><td><strong>Erfassen</strong> für neue Einträge</td></tr>
+      <tr><td>Tools</td><td><strong>Einstellungen</strong></td></tr>
+      <tr><td>Submit, OK</td><td>das Verb der Handlung: <strong>Deck erzeugen</strong></td></tr>
+      <tr><td>„Ein Fehler ist aufgetreten.“</td><td>was schiefging und was jetzt hilft</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="aktionsleiste">
+  <button class="btn btn-klein" style="flex:1">⚡ Schnell</button>
+  <button class="btn btn-klein" style="flex:1">CSV</button>
+</div>
+</body>
+</html>

@@ -19,6 +19,11 @@
       "name": "frmd-pasn",
       "source": "./plugins/frmd-pasn",
       "description": "Bildoptimierung fuer Produktfotos der Website frmdpasn.art."
+    },
+    {
+      "name": "oberflaeche",
+      "source": "./plugins/oberflaeche",
+      "description": "Verbindliche Oberflaechen-Regeln fuer Charles' eigene Einzeldatei-Apps: Token, Bauteile, Musterbogen."
     }
   ]
 }
